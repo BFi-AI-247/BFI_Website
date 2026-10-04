@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BFi-Monogramm (hell)</title>
+  <style>
+    /* ============================================================
+       JUSTIEREN – Farben (hier musst du nur die Werte ändern)
+       ============================================================ */
+    :root {
+      --bg-oben:   #f6f7f8;   /* heller Badge-Hintergrund, oben       */
+      --bg-unten:  #e1e3e6;   /* heller Badge-Hintergrund, unten      */
+      --bfi-deckkraft: 0.78;  /* Buchstaben-Deckkraft (1.0 = voll)    */
+      --fbi-farbe: #c9cbd0;   /* Wasserzeichen-Farbe                  */
+
+      --bfi:       #23262b;   /* Farbe der Buchstaben B F ı            */
+      --bronze-a:  #dcb269;   /* Bronze, hell (i-Punkt & Linien)       */
+      --bronze-b:  #8c6a25;   /* Bronze, dunkel (i-Punkt & Linien)     */
+
+      --rahmen:    #1f242b;   /* Farbe der beiden inneren Rahmenlinien */
+      --wm-stroke: #b7bac0;   /* Konturfarbe des FBI-Wasserzeichens    */
+      --schatten:  #1f242b;   /* Farbe des Schlagschattens             */
+      --schatten-deckkraft: 0.18; /* Deckkraft des Schlagschattens     */
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    /* ============================================================
+       JUSTIEREN – Größe & Zoom-Verhalten
+       ============================================================
+       min(100%, 480px) heißt: füllt den Container, aber nie breiter
+       als 480px. Alternativen:
+         width: 400px;            -> feste Breite
+         width: 50%;              -> die Hälfte des Fensters
+    */
+    .badge {
+      width: min(100%, 480px);
+      height: auto;
+      display: block;
+    }
+
+    .stop-bg-oben  { stop-color: var(--bg-oben); }
+    .stop-bg-unten { stop-color: var(--bg-unten); }
+    .stop-bronze-a { stop-color: var(--bronze-a); }
+    .stop-bronze-b { stop-color: var(--bronze-b); }
+    .bfi-fill      { fill: var(--bfi); opacity: var(--bfi-deckkraft); }
+    .fbi-wm        { fill: var(--fbi-farbe); stroke: var(--wm-stroke); }
+    .rahmen-aussen { stroke: var(--rahmen); stroke-opacity: 0.10; }
+    .rahmen-innen  { stroke: var(--rahmen); stroke-opacity: 0.05; }
+    .schatten      { fill: var(--schatten); opacity: var(--schatten-deckkraft); }
+  </style>
+</head>
+<body>
+
+  <!-- WICHTIG für Zoom/Skalierung:
+       - viewBox="0 0 400 306" MUSS bleiben (das ist der Maßstab)
+       - KEIN festes width/height-Attribut im <svg>-Tag selbst
+       - Alle Koordinaten sind "interne" Einheiten der viewBox -->
+  <svg class="badge" viewBox="0 0 400 306" role="img" aria-label="Monogramm BFi, helle Variante">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="35%" r="85%">
+        <stop class="stop-bg-oben" offset="0%" />
+        <stop class="stop-bg-unten" offset="100%" />
+      </radialGradient>
+
+      <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+        <stop class="stop-bronze-a" offset="0%" />
+        <stop class="stop-bronze-b" offset="100%" />
+      </linearGradient>
+
+      <!-- JUSTIEREN: stdDeviation = Weichzeichnung des Schattens -->
+      <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2.5" />
+      </filter>
+    </defs>
+
+    <!-- Badge-Fläche. JUSTIEREN: rx="36" = Rundung der Ecken.
+         Innenabstand ringsum: 49 Einheiten. Wenn du Inhalte verschiebst,
+         verschiebe sie alle gemeinsam und passe die Höhe an:
+         Höhe = 49 + Abstand oberste Linie bis unterste Linie + 49 -->
+    <rect width="400" height="306" rx="36" fill="url(#bg)" />
+    <rect class="rahmen-aussen" x="10" y="10" width="380" height="286" rx="28" fill="none"
+          stroke-width="1.5" />
+    <rect class="rahmen-innen" x="19" y="19" width="362" height="268" rx="22" fill="none"
+          stroke-width="1" />
+
+    <g text-anchor="middle"
+       font-family="'Arial Black','Arial Bold',Arial,Helvetica,sans-serif"
+       font-weight="900">
+      <!-- FBI-Wasserzeichen. JUSTIEREN: y = Höhe, font-size = Größe,
+           Farbe über --fbi-farbe oben im <style> (heller = weniger deutlich) -->
+      <text class="fbi-wm" x="200" y="182" font-size="140" letter-spacing="15"
+            stroke-width="1.5">FBI</text>
+
+      <!-- Schatten. JUSTIEREN: x/y = Versatz nach rechts/unten (Vordergrund: 200/225),
+           --schatten-deckkraft = Schattenstärke (auf hellem Grund niedrig halten!) -->
+      <text class="schatten" x="207" y="232" font-size="165" filter="url(#soft)">BFı</text>
+
+      <!-- Vordergrund: BFi (punktloses i), Durchlässigkeit über --bfi-deckkraft -->
+      <text class="bfi-fill" x="200" y="225" font-size="165">BFı</text>
+    </g>
+
+    <!-- JUSTIEREN: bronzener i-Punkt. cx = horizontal über dem ı-Balken
+         (bei anderer Schriftart eventuell etwas anpassen), cy = Höhe, r = Größe -->
+    <circle cx="320" cy="119" r="13.5" fill="url(#bronze)" />
+
+    <!-- JUSTIEREN: Akzentlinien. y = Höhe, x/width = Anfang & Länge,
+         height = Strichstärke -->
+    <rect x="92" y="49" width="216" height="6" rx="3" fill="url(#bronze)" />
+    <rect x="92" y="251" width="216" height="6" rx="3" fill="url(#bronze)" />
+  </svg>
+
+</body>
+</html>
