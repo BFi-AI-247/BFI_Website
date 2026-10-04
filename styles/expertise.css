@@ -1,0 +1,128 @@
+/* Hintergrundbild: vollständig sichtbar, max. 1200px breit, zentriert, geblasst */
+#expertise {
+    padding: 4rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+#expertise::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 1200px);        /* Breitenbegrenzung */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+        url('../images/mountains_2.jpg');
+    background-size: cover, contain; /* Bild komplett zeigen, nicht beschnitten */
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+/* JUSTIEREN: 0.85 im Gradienten = Blässe des Bildes */
+
+/* Überschrift – wie "Meine Stationen" */
+#expertise h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+    font-weight: normal;
+    text-align: center;
+}
+
+/* Zwei gleichbreite, GLEICH LANGE Spalten */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: stretch;            /* beide Spalten gleich hoch */
+}
+
+.expertise-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.expertise-item h3 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: var(--black);
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin: 0 0 1.5rem;
+}
+
+/* Liste füllt die Spaltenhöhe -> kürzere Liste wird verteilt */
+.expertise-item > ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Basis-Listenpunkte */
+.expertise-item li {
+    position: relative;
+    padding-left: 1.25rem;
+    line-height: 1.5;
+}
+
+.expertise-item li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--black);
+}
+
+/* Höchste Ebene: in BEIDEN Spalten identisch (fett, schwarz, gleicher Abstand) */
+.expertise-item > ul > li {
+    font-weight: bold;
+    color: var(--black);
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+/* Unterpunkte: kompaktere Zeilenabstände */
+.expertise-item ul ul {
+    list-style: none;
+    margin: 0.15rem 0 0.5rem 0.5rem;
+    padding: 0;
+}
+
+.expertise-item li li {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    line-height: 1.35;               /* JUSTIEREN: Zeilenabstand Unterpunkte */
+    color: var(--dark-gray);
+    font-weight: normal;
+}
+
+.expertise-item li li::before {
+    content: "–";
+    color: var(--medium-gray);
+}
+
+.expertise-item li strong {
+    color: var(--black);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    #expertise {
+        padding: 2rem 0;
+    }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

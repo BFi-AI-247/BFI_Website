@@ -1,0 +1,253 @@
+/* ===== BASE STYLES ===== */
+:root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --light-gray: #F5F5F5;
+    --dark-gray: #333333;
+    --medium-gray: #666666;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    background-color: var(--white);
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--dark-gray);
+}
+
+h1, h2, h3, h4 {
+    font-family: Georgia, serif;
+    color: var(--black);
+    font-weight: normal;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 4rem 0;
+}
+
+
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== ROW & COLUMNS ===== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+    margin: 2rem 0;
+}
+
+.col-6 {
+    flex: 1;
+    min-width: 300px;
+}
+
+.img-right {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--medium-gray);
+}
+
+/* ===== FACTS ===== */
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.fact {
+    text-align: center;
+    min-width: 150px;
+}
+
+.fact .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.fact .label {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+}
+
+
+
+
+/* ===== PUB GRID ===== */
+.pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.pub-item {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border: 1px solid var(--light-gray);
+}
+
+.pub-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.pub-item ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pub-item li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.pub-item li::before {
+    content: "•";
+    color: var(--black);
+    position: absolute;
+    left: 0;
+}
+
+
+
+/* ===== CERT GRID ===== */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.cert-item {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border: 1px solid var(--light-gray);
+    text-align: center;
+}
+
+.cert-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+    background-color: var(--light-gray);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    text-align: center;
+}
+
+.social-links p {
+    margin: 0.5rem 0;
+}
+
+.note {
+    font-size: 0.8rem;
+    color: var(--medium-gray);
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer .container {
+    max-width: 100%;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+.legal {
+    font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-6 {
+        width: 100%;
+    }
+    
+    .img-right {
+        margin-top: 1rem;
+    }
+    
+    section {
+        padding: 2rem 0;
+    }
+    
+    .facts {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+

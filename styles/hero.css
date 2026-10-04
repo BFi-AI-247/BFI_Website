@@ -1,0 +1,85 @@
+/* ===== HERO SECTION ===== */
+
+
+/* Weiße Box NUR um den Text */
+
+
+.hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                      url('../images/mountains.jpg');
+    background-size: 60% auto; /* Weniger vergrößert */
+    background-position: right center; /* Rechtsbündig */
+    background-repeat: no-repeat;
+	min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+
+
+.hero-content {
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.8); /* 20% Transparenz */
+    display: inline-block; /* Passt sich dem Inhalt an */
+    padding: 2rem;
+    position: relative;
+    z-index: 1; /* Über dem vertikalen Text */
+	    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+    border-radius: 0; /* Optional: Für schärfere Ecken */
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid var(--black);
+}
+
+.hero h1 {
+    margin-bottom: 0.2rem;  /* Abstand zum Namen reduzieren */
+}
+
+.hero h2 {
+    margin: 0.1rem 0 0.3rem;  /* Weniger Abstand nach oben, etwas mehr nach unten */
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+.hero h3 {
+    margin-top: 0.2rem;  /* Abstand zur Position reduzieren */
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.tagline {
+    max-width: 600px;
+    margin: 1rem auto;
+    font-size: 1.1rem;
+}
+
+.location {
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--dark-gray);
+}

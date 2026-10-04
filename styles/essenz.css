@@ -1,0 +1,69 @@
+/* ===== ESSENZ SECTION ===== */
+
+#essenz {
+    padding: 4rem 0;
+    background-color: var(--white);
+    position: relative;
+    z-index: 0;
+}
+
+#essenz .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.fact {
+    text-align: center;
+    min-width: 150px;
+}
+
+.fact .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: block;
+}
+
+.fact .label {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+}
+
+/* Breitformatiges Bild unter Facts */
+.wide-image-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2rem auto 0;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wide-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border: 1px solid var(--medium-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .facts {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wide-image-container {
+        max-width: 100%;
+        margin-top: 1.5rem;
+    }
+}

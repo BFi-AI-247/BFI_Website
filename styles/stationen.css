@@ -1,0 +1,232 @@
+/* ===== STATIONEN SECTION ===== */
+
+#stationen {
+    padding: 4rem 0;
+    /* diese 4 Zeilen entfallen: */
+    /* background-image: linear-gradient(...), url('../images/Black_BG.JPG'); */
+    /* background-size: 40% auto; */
+    /* background-position: right center; */
+    /* background-repeat: no-repeat; */
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+
+}
+
+
+/* Hintergrundbild mit weichen Kanten */
+#stationen::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 40%;
+    aspect-ratio: 2736 / 3648;   /* Seitenverhältnis von Black_BG.JPG */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+        url('../images/Black_BG.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;   /* hinter dem Inhalt, aber über dem Sektionshintergrund */
+
+    /* ca. 5% weicher Rand an allen vier Seiten, von innen nach außen */
+    -webkit-mask-image:
+        linear-gradient(to right,  transparent, #000 2%, #000 98%, transparent),
+        linear-gradient(to bottom, transparent, #000 2%, #000 98%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(to right,  transparent, #000 2%, #000 98%, transparent),
+        linear-gradient(to bottom, transparent, #000 2%, #000 98%, transparent);
+    mask-composite: intersect;
+}
+
+#stationen .container {
+    background-color: rgba(255, 255, 255, 0.5); /* Halbtransparentes Weiß für den Container */
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+	border-radius: 5; 
+ --   z-index: 3; /* Höher als die Sektion (z-index: 2) */
+}
+
+#stationen h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+    font-weight: normal;
+    text-align: center;
+}
+
+/* Stationen Grid */
+.stationen-grid {
+    display: flex;
+    flex-direction: column; /* NEU: Zeilenweise Anordnung */
+    gap: 2rem; /* Abstand zwischen den Zeilen */
+    margin: 2rem 0;
+}
+
+/* NEU: Stationen-Zeile (horizontale Gruppe) */
+.station-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Abstand zwischen den Items in einer Zeile */
+    flex-wrap: wrap; /* Falls zu wenig Platz ist */
+}
+
+/* Einzelne Station */
+/* Einzelne Station */
+.station-item {
+    width: 180px; /* Breite eines Items */
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* NEU: Logo und Label untereinander */
+    align-items: center; /* NEU: Zentriere Logo und Label */
+	
+}
+
+.station-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--black);
+    margin-top: 0.5rem; /* Abstand zwischen Logo und Label */
+}
+
+.station-logo {
+    height: auto;
+    max-width: 150px;
+    max-height: 100px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--light-gray);
+    padding: 1rem;
+    
+}
+
+.station-item:hover .station-logo {
+    transform: scale(1.05);
+}
+
+/* Tooltip-Stil */
+.station-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background-color: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.station-item:hover .station-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.station-tooltip h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 0.5rem;
+}
+
+.station-tooltip p {
+    margin: 0.25rem 0;
+    color: var(--dark-gray);
+}
+
+.station-tooltip .period {
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* Überschrift zwischen den Zeilen (Professional & Manager) */
+.stationen-category-title {
+    text-align: center;
+    margin: 0.2rem 0; /* Abstand über und unter der Überschrift */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stationen-category-title span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--black);
+    font-family: Georgia, serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stationen-grid {
+        gap: 1rem;
+    }
+    
+    .station-row {
+        gap: 1rem; /* NEU: Weniger Abstand auf kleinen Bildschirmen */
+    }
+
+    .station-item {
+        width: 120px; /* NEU: Kleinere Breite auf kleinen Bildschirmen */
+    }
+    
+    .station-tooltip {
+        width: 250px;
+        font-size: 0.8rem;
+    }
+    
+    #stationen {
+        padding: 2rem 0;
+    }
+}
+
+.stationen-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.station-item {
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.station-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background-color: var(--white);
+    border: 1px solid var(--medium-gray);
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.station-item:hover .station-tooltip {
+    opacity: 1;
+    visibility: visible;
+}

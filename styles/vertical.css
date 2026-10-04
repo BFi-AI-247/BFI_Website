@@ -1,0 +1,54 @@
+/* ===== VERTIKALER TEXT + MONOGRAMM ===== */
+.vertical-text-container {
+    position: fixed;
+    left: 25px;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;    /* Text oben, Badge darunter */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;               /* JUSTIEREN: Abstand Text <-> Badge */
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg); /* Rotation hierher verschoben – lest sich
+                                  weiter von unten nach oben, Badge bleibt aufrecht */
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 700;
+    font-size: 4.5rem;
+    color: rgba(0, 0, 0, 0.17);
+    letter-spacing: 0.15em;
+    line-height: 1.0;
+	 
+}
+
+.vertical-text span {
+    display: block;
+}
+
+/* Monogramm-Badge (Verweis auf monogram_6.html) */
+.vertical-text-container object {
+    display: block;
+    flex-shrink: 0;
+    width: 140px;             /* JUSTIEREN: Badge-Breite */
+    aspect-ratio: 400 / 306;  /* Proportionen aus der viewBox des Badges */
+    border: 0;
+	opacity: 0.95;   /* JUSTIEREN: 1 = original, 0.6 = deutlich heller */
+	margin-top: -15px; 
+	margin-left: -9px;
+}
+
+/* Contact-Button im vertikalen Streifen */
+.vertical-btn {
+    pointer-events: auto;     /* WICHTIG: Container hat pointer-events: none –
+                                 ohne diese Zeile wäre der Button nicht klickbar! */
+    margin-left: 0;           /* hier ggf. Margin-Offsets vom Feintuning setzen */
+    padding: 0.5rem 1rem;     /* etwas kompakter als der Hero-Button */
+    font-size: 0.85rem;
+    white-space: nowrap;      /* kein Umbruch in zwei Zeilen */
+}

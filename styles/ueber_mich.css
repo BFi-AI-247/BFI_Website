@@ -1,0 +1,103 @@
+/* ===== ÜBER MICH SECTION ===== */
+
+#ueber-mich {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5); /* 20% Transparenz */
+}
+
+#ueber-mich .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.7); /* 20% Transparenz */
+}
+
+#ueber-mich h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+    font-weight: normal;
+}
+
+#ueber-mich .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+    margin: 2rem 0;
+}
+
+#ueber-mich .col-6 {
+    flex: 1;
+    min-width: 300px;
+}
+
+#ueber-mich .img-right {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--medium-gray);
+}
+
+
+
+/* Dissertation Hover-Effekt */
+#ueber-mich .dissertation-hover {
+    position: relative;
+    display: inline;
+    cursor: pointer;
+}
+
+#ueber-mich .dissertation-text {
+    font-family: Georgia, serif;
+    color: #333333;
+    font-weight: bold;
+    font-style: normal;
+}
+
+#ueber-mich .dissertation-hover .dissertation-cover {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    width: 200px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    z-index: 100;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#ueber-mich .dissertation-hover:hover .dissertation-cover {
+    display: block;
+}
+
+
+
+
+
+/* Responsive Design für Über mich */
+@media (max-width: 768px) {
+    #ueber-mich .row {
+        flex-direction: column;
+    }
+    
+    #ueber-mich .col-6 {
+        width: 100%;
+    }
+    
+    #ueber-mich .img-right {
+        margin-top: 1rem;
+    }
+    
+    #ueber-mich .facts {
+        flex-direction: column;
+        align-items: center;
+    }
+}

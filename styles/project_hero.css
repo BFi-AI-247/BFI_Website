@@ -1,0 +1,183 @@
+/* ===== PROJEKT-HERO-BEREICH (mit freiem linken Rand) ===== */
+.projects-hero {
+  padding: 0.5rem 0;
+  background-color: var(--light-gray);
+}
+.projects-hero h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+    font-weight: normal;
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.5); /* Halbtransparentes Weiß für den Container */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+	border-radius: 5; 
+ --   z-index: 3; /* Höher als die Sektion (z-index: 2) */
+}
+
+.projects-wrapper {
+  max-width: 800px;          /* Wie .container */
+  margin: 0 auto;            /* Zentriert wie .container */
+  padding-left: 75px;        /* 25px (Text) + 50px (Abstand) */
+  padding-right: 2rem;       /* Wie .container */
+  display: flex;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.main-projects {
+  width: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem;
+  row-gap: 0.1rem;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid var(--medium-gray);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 120px;
+}
+
+.project-card:hover {
+  transform: scale(1.8);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.main-projects:hover .project-card:not(:hover) {
+  /*transform: scale(0.9);*/
+  opacity: 0.7;
+}
+
+.project-front {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project-front h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.project-front .role,
+.project-front .period {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--medium-gray);
+}
+
+.project-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  padding: 0.8rem;
+  display: none;
+  overflow-y: auto;
+  box-sizing: border-box;
+  font-size: 0.5rem;
+  /*min-height: 800px;*/
+}
+.project-details h3 {
+ margin: 0 0 0.15rem;  /* Abstand nach unten: 0.5rem → 0.25rem */
+  font-size: 0.9rem;     /* Schriftgröße: 1.2rem → 1.1rem */
+}
+
+.project-card:hover .project-details {
+  display: block;
+}
+
+.project-card:hover .project-front {
+  display: none;
+}
+
+.additional-projects {
+  flex: 1;
+  max-width: 400px;
+  font-size: 0.9rem;
+}
+
+.additional-projects h4 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 0.5rem;
+}
+
+.additional-projects ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.additional-projects li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.additional-projects li::before {
+  content: "•";
+  color: var(--black);
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+
+  .main-projects {
+    grid-template-columns: 1fr; /* 1 Spalte auf Mobil */
+  }
+  .additional-projects {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-projects {
+    grid-template-columns: 1fr; /* 1 Spalte auf Mobil */
+  }
+
+  /* ===== Hover-Effekt für Mobile ===== */
+  .project-card:hover {
+    transform: scale(1.05); /* Statt 1.8: nur leicht vergrößern */
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Andere Karten kaum schrumpfen/ausblenden */
+  .main-projects:hover .project-card:not(:hover) {
+    transform: none;       /* Kein Schrumpfen */
+    opacity: 1;           /* Voll sichtbar */
+  }
+
+  /* Details besser lesbar machen */
+  .project-details {
+    font-size: 0.8rem;    /* Etwas größer als 0.5rem */
+    padding: 1rem;        /* Mehr Innenabstand */
+  }
+}
